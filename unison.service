@@ -1,0 +1,16 @@
+[Unit]
+Description=Unison Sync
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/unison PROFILENAME
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+Type=simple
+User=root
+Environment=HOME=/root/
+
+[Install]
+WantedBy=multi-user.target
+Alias=unison.service
